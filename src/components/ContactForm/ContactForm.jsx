@@ -7,21 +7,10 @@ import css from './ContactForm.module.css';
 
 const ContactForm = () => {
   const contacts = useSelector(getContacts);
-  useEffect(() => {
-    const savedContacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(savedContacts);
-    if (parsedContacts) {
-      console.log('parsed', parsedContacts);
-      //   // dispatch(addContact(parsedContacts));
-      // setContacts(parsedContacts);
-    }
-  }, []);
 
   useEffect(() => {
-    // if (state.contacts !== prevState.contacts) {
     const stringifiedContacts = JSON.stringify(contacts);
     localStorage.setItem('contacts', stringifiedContacts);
-    // }
   }, [contacts]);
 
   const dispatch = useDispatch();
